@@ -1,0 +1,100 @@
+
+//+------------------------------------------------------------------+
+//|                                                       Apocalypse Gold EA |
+//|                                Copyright 2022, Forex Robot Easy Team |
+//|                                            https://forexroboteasy.com |
+//+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Set stop loss levels
+    double stopLossLevel = 100.0; // Adjust according to the strategy
+
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Close all open positions
+    CloseAllPositions();
+
+    // Print the reason for deinitialization
+    Print('Apocalypse Gold EA deinitialized. Reason: ', reason);
+}
+
+//+------------------------------------------------------------------+
+//| Expert start function                                            |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Check if it's within trading hours
+    if (!IsTradingHours())
+        return;
+
+    // Execute entry logic
+    if (IsEntrySignal())
+    {
+        // Open a buy position
+        if (OpenBuyPosition())
+            Print('Buy position opened at ', Symbol(), ' - ', TimeCurrent());
+    }
+
+    // Execute exit logic
+    if (IsExitSignal())
+    {
+        // Close all open positions
+        CloseAllPositions();
+        Print('All positions closed at ', Symbol(), ' - ', TimeCurrent());
+    }
+}
+
+//+------------------------------------------------------------------+
+//| Check if it's within trading hours                               |
+//+------------------------------------------------------------------+
+bool IsTradingHours()
+{
+    // Implement trading hours logic here
+    return true;
+}
+
+//+------------------------------------------------------------------+
+//| Check if there is a valid entry signal                            |
+//+------------------------------------------------------------------+
+bool IsEntrySignal()
+{
+    // Implement entry signal logic here
+    return true;
+}
+
+//+------------------------------------------------------------------+
+//| Open a buy position                                              |
+//+------------------------------------------------------------------+
+bool OpenBuyPosition()
+{
+    // Implement buy position opening logic here
+    return true;
+}
+
+//+------------------------------------------------------------------+
+//| Check if there is a valid exit signal                             |
+//+------------------------------------------------------------------+
+bool IsExitSignal()
+{
+    // Implement exit signal logic here
+    return true;
+}
+
+//+------------------------------------------------------------------+
+//| Close all open positions                                         |
+//+------------------------------------------------------------------+
+void CloseAllPositions()
+{
+    // Implement closing logic for all open positions here
+}
+
